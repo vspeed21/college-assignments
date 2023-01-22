@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react';
 import useTask from '../hooks/useTask';
 import { toast } from 'react-toastify';
+import TaskList from './TaskList';
 
 function FormTask() {
   const [nameTask, setNameTask] = useState('');
@@ -23,10 +24,11 @@ function FormTask() {
   };
 
   return (
-    <div className='flex justify-center items-center h-screen'>
+    <div
+      className='bg-white p-5 shadow-lg rounded-md mx-5 w-[600px] md:mx-auto'
+    >
       <form
         onSubmit={handleSubmit}
-        className='bg-white p-5 shadow-lg rounded-md mx-5 w-[600px] md:mx-auto'
       >
         <div className="flex flex-col gap-3 mb-3">
           <label htmlFor="name">Nombre Tarea</label>
@@ -72,6 +74,7 @@ function FormTask() {
           className='bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-white font-bold mt-3 hover:cursor-pointer w-full'
         />
       </form>
+      <TaskList/>
     </div>
   );
 }

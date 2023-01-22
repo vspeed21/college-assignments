@@ -2,7 +2,7 @@ import FormTask from './FormTask';
 
 function Admin() {
   return (
-    <div>
+    <div className='flex justify-center items-center h-screen'>
       <FormTask/>
     </div>
   );

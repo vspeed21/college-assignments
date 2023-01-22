@@ -1,4 +1,6 @@
 import { createContext, useState } from 'react';
+import swal from 'sweetalert';
+
 import { toast } from 'react-toastify';
 import { InfoUser, Task } from '../interface';
 
@@ -41,8 +43,20 @@ export const TaskProvider = ({ children }:Props ) => {
   }
 
   function deleteTask(id?: string) {
-    const updatedTasks = tasks.filter(t => t.id !== id);
-    setTasks(updatedTasks);
+    swal({
+      title: '¿Estas seguro?',
+      text: 'No se podra recuperar la informacion de esta tarea',
+      icon: 'warning',
+      buttons: ['CANCELAR', 'CONFIRMAR'],
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          const updatedTasks = tasks.filter(t => t.id !== id);
+          setTasks(updatedTasks);
+          toast.success('Tarea eliminada correctamente');
+        }
+      });
   }
 
   return (

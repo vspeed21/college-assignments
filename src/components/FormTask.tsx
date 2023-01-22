@@ -9,6 +9,9 @@ function FormTask() {
   const { subjectValues } = useTask();
   const valuesInputs = Object.values(subjectValues);
 
+  const date = new Date();
+  const minDate = `${date.getFullYear()}-0${date.getMonth() + 1}-${date.getDate()}`;
+
   return (
     <div className='flex justify-center items-center h-screen'>
       <form
@@ -33,6 +36,8 @@ function FormTask() {
               className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4"
               value={dateTask}
               onChange={e => setDateTask(e.target.value)}
+              min={minDate}
+              max='2024-01-23'
             />
           </div>
           <div className="flex flex-col gap-3 mb-3 w-1/2">

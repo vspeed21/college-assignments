@@ -7,7 +7,7 @@ function FormTask() {
   const [nameTask, setNameTask] = useState('');
   const [dateTask, setDateTask] = useState('');
   const [subjectTask, setSubjectTask] = useState('');
-  const [id, setId] = useState<string>();
+  const [id, setId] = useState<string>('');
 
   const { subjectValues, handleTask, task } = useTask();
 

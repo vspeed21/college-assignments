@@ -13,4 +13,5 @@ export type ContextTaskProps = {
   tasks: Task[]
   task: Task,
   setTask: (task: Task) => void,
+  deleteTask: (id: string) => void
 };

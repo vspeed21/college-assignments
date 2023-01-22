@@ -6,7 +6,7 @@ interface Props {
 }
 
 function TaskC({task}:Props) {
-  const { setTask } = useTask();
+  const { setTask, deleteTask } = useTask();
 
   return (
     <div className='bg-gray-100 shadow my-5 rounded p-2 mx-2'>
@@ -35,6 +35,7 @@ function TaskC({task}:Props) {
           <button
             type='button'
             className='px-4 py-1.5 rounded transition-colors duration-300 hover:cursor-pointer bg-red-600 hover:bg-red-800 text-white font-bold'
+            onClick={() => deleteTask(task.id)}
           >
             Eliminar
           </button>

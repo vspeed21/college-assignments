@@ -40,6 +40,11 @@ export const TaskProvider = ({ children }:Props ) => {
     }
   }
 
+  function deleteTask(id?: string) {
+    const updatedTasks = tasks.filter(t => t.id !== id);
+    setTasks(updatedTasks);
+  }
+
   return (
     <TaskContext.Provider
       value={{
@@ -54,6 +59,7 @@ export const TaskProvider = ({ children }:Props ) => {
         tasks,
         task,
         setTask,
+        deleteTask,
       }}
     >
       {children}

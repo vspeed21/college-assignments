@@ -1,9 +1,20 @@
-
+import useTask from './hooks/useTask';
+import FormAsk from './components/FormAsk';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const { validQuestions } = useTask();
 
   return (
-    <h1>tareas universitarias</h1>
+    <>
+      <ToastContainer/>
+      {validQuestions ? (
+        <p>admin</p>
+      ) : (
+        <FormAsk/>
+      )}
+    </>
   );
 }
 

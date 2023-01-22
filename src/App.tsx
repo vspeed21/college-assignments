@@ -1,7 +1,9 @@
-import useTask from './hooks/useTask';
-import FormAsk from './components/FormAsk';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import useTask from './hooks/useTask';
+import FormAsk from './components/FormAsk';
+import Admin from './components/Admin';
 
 function App() {
   const { validQuestions } = useTask();
@@ -10,7 +12,7 @@ function App() {
     <>
       <ToastContainer/>
       {validQuestions ? (
-        <p>admin</p>
+        <Admin/>
       ) : (
         <FormAsk/>
       )}

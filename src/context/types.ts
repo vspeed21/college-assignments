@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { InfoUser } from '../interface';
+import { InfoUser, Task } from '../interface';
 
 export type ContextTaskProps = {
   infoUser: InfoUser
@@ -9,4 +9,6 @@ export type ContextTaskProps = {
   inputs: Array<[]>
   handleSubjectValue: (e: ChangeEvent<HTMLInputElement>, i: number) => void,
   subjectValues: string[],
+  handleTask: (task: Task) => void,
+  tasks: Task[]
 };

@@ -1,20 +1,31 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import useTask from '../hooks/useTask';
+import { toast } from 'react-toastify';
 
 function FormTask() {
   const [nameTask, setNameTask] = useState('');
   const [dateTask, setDateTask] = useState('');
   const [subjectTask, setSubjectTask] = useState('');
 
-  const { subjectValues } = useTask();
+  const { subjectValues, handleTask } = useTask();
   const valuesInputs = Object.values(subjectValues);
 
   const date = new Date();
   const minDate = `${date.getFullYear()}-0${date.getMonth() + 1}-${date.getDate()}`;
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if(Object.values({nameTask, dateTask, subjectTask}).includes('')) {
+      toast.error('Llena los campos vacios');
+      return;
+    }
+    handleTask({nameTask, dateTask, subjectTask});
+  };
+
   return (
     <div className='flex justify-center items-center h-screen'>
       <form
+        onSubmit={handleSubmit}
         className='bg-white p-5 shadow-lg rounded-md mx-5 w-[600px] md:mx-auto'
       >
         <div className="flex flex-col gap-3 mb-3">

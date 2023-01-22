@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
-import { InfoUser } from '../interface';
+import { toast } from 'react-toastify';
+import { InfoUser, Task } from '../interface';
 
 const TaskContext = createContext({});
 
@@ -11,8 +12,9 @@ export const TaskProvider = ({ children }:Props ) => {
   const [infoUser, setInfoUser] = useState<InfoUser>({
     name: '',
     subject: '',
-    subjects: []
   });
+  const [tasks, setTasks] = useState<Task[]>([]);
+
   const [validQuestions, setValidQuestions] = useState(false);
 
   // Generar el estado de cada uno de las materias dinamicamente
@@ -25,6 +27,11 @@ export const TaskProvider = ({ children }:Props ) => {
     setSubjectValues(newInputValues);
   }
 
+  function handleTask(task:Task) {
+    setTasks([...tasks, task]);
+    toast.success('Tarea agregada correctamente');
+  }
+
   return (
     <TaskContext.Provider
       value={{
@@ -34,7 +41,9 @@ export const TaskProvider = ({ children }:Props ) => {
         validQuestions,
         inputs,
         subjectValues,
-        handleSubjectValue
+        handleSubjectValue,
+        handleTask,
+        tasks,
       }}
     >
       {children}

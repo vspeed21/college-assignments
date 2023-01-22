@@ -1,10 +1,13 @@
 import { Task } from '../interface';
+import useTask from '../hooks/useTask';
 
 interface Props {
   task: Task
 }
 
 function TaskC({task}:Props) {
+  const { setTask } = useTask();
+
   return (
     <div className='bg-gray-100 shadow my-5 rounded p-2 mx-2'>
       <h3 className='text-center uppercase text-lg'>{task.nameTask}</h3>
@@ -25,6 +28,7 @@ function TaskC({task}:Props) {
           <button
             type='button'
             className='px-4 py-1.5 rounded transition-colors duration-300 hover:cursor-pointer bg-sky-600 hover:bg-sky-800 text-white font-bold'
+            onClick={() => setTask(task)}
           >
             Editar
           </button>

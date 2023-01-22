@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useEffect } from 'react';
 import useTask from '../hooks/useTask';
 import { toast } from 'react-toastify';
 import TaskList from './TaskList';
@@ -7,8 +7,19 @@ function FormTask() {
   const [nameTask, setNameTask] = useState('');
   const [dateTask, setDateTask] = useState('');
   const [subjectTask, setSubjectTask] = useState('');
+  const [id, setId] = useState<string>();
 
-  const { subjectValues, handleTask } = useTask();
+  const { subjectValues, handleTask, task } = useTask();
+
+  useEffect(() => {
+    if(task?.nameTask) {
+      setNameTask(task.nameTask);
+      setDateTask(task.dateTask);
+      setSubjectTask(task.subjectTask);
+      setId(task?.id);
+    }
+  }, [task]);
+
   const valuesInputs = Object.values(subjectValues);
 
   const date = new Date();
@@ -20,7 +31,12 @@ function FormTask() {
       toast.error('Llena los campos vacios');
       return;
     }
-    handleTask({nameTask, dateTask, subjectTask});
+    handleTask({nameTask, dateTask, subjectTask, id});
+    // Clean inputs
+    setNameTask('');
+    setDateTask('');
+    setSubjectTask('');
+    setId('');
   };
 
   return (
@@ -70,7 +86,7 @@ function FormTask() {
 
         <input
           type='submit'
-          value='Agregar Tarea'
+          value={task?.nameTask ? 'Guardar Cambios': 'Agregar Tarea'}
           className='bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-white font-bold mt-3 hover:cursor-pointer w-full'
         />
       </form>

@@ -14,6 +14,7 @@ export const TaskProvider = ({ children }:Props ) => {
     subject: '',
   });
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [task, setTask] = useState<Partial<Task>>({});
 
   const [validQuestions, setValidQuestions] = useState(false);
 
@@ -28,8 +29,15 @@ export const TaskProvider = ({ children }:Props ) => {
   }
 
   function handleTask(task:Task) {
-    setTasks([...tasks, task]);
-    toast.success('Tarea agregada correctamente');
+    if(task.id) {
+      const updatedTasks = tasks.map( t => t.id === task.id ? task : t);
+      setTasks(updatedTasks);
+      setTask({});
+    }else {
+      task.id = crypto.randomUUID();
+      setTasks([...tasks, task]);
+      toast.success('Tarea agregada correctamente');
+    }
   }
 
   return (
@@ -44,6 +52,8 @@ export const TaskProvider = ({ children }:Props ) => {
         handleSubjectValue,
         handleTask,
         tasks,
+        task,
+        setTask,
       }}
     >
       {children}

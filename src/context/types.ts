@@ -11,4 +11,6 @@ export type ContextTaskProps = {
   subjectValues: string[],
   handleTask: (task: Task) => void,
   tasks: Task[]
+  task: Task,
+  setTask: (task: Task) => void,
 };

@@ -1,5 +1,6 @@
 import { Task } from '../interface';
 import useTask from '../hooks/useTask';
+import { formatDate } from '../helpers';
 
 interface Props {
   task: Task
@@ -9,18 +10,18 @@ function TaskC({task}:Props) {
   const { setTask, deleteTask } = useTask();
 
   return (
-    <div className='bg-gray-100 shadow my-5 rounded p-2 mx-2'>
+    <div className='bg-gray-100 shadow my-5 rounded p-4 mx-2'>
       <h3 className='text-center uppercase text-lg'>{task.nameTask}</h3>
 
       <div className='flex justify-between mt-3 items-center'>
         <div className='flex flex-col gap-2'>
           <p>
             Asignatura: {''}
-            <span className='font-bold'>{task.subjectTask}</span>
+            <span className='font-bold capitalize'>{task.subjectTask}</span>
           </p>
           <p>
             Fecha de entrega: {''}
-            <span className='font-bold'>{task.dateTask}</span>
+            <span className='font-bold'>{formatDate(task.dateTask)}</span>
           </p>
         </div>
 

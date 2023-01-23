@@ -44,8 +44,8 @@ export const TaskProvider = ({ children }:Props ) => {
   }, [tasks]);
 
   useEffect(() => {
-    const infoUser = localStorage.getItem('infouser');
-    if(infoUser) {
+    const infoUser = JSON.parse(localStorage.getItem('infouser')!);
+    if(infoUser.name) {
       setValidQuestions(true);
     }
   }, []);

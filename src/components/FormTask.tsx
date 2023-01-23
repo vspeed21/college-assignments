@@ -45,10 +45,11 @@ function FormTask() {
       <ShowInfoUser/>
 
       <div
-        className='bg-white p-5 shadow-lg rounded-md mx-5 w-[600px] md:mx-auto'
+        className='bg-white p-5 md:p-10 shadow-lg rounded-md mx-5 md:mx-auto flex flex-col md:flex-row gap-7 items-center'
       >
         <form
           onSubmit={handleSubmit}
+          className='md:w-1/3'
         >
           <div className="flex flex-col gap-3 mb-7">
             <label htmlFor="name" className='uppercase font-bold text-gray-700'>Titulo Tarea</label>

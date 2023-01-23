@@ -13,7 +13,7 @@ function TaskC({task}:Props) {
     <div className='bg-gray-100 shadow my-5 rounded p-4 mx-2'>
       <h3 className='text-center uppercase text-lg'>{task.nameTask}</h3>
 
-      <div className='flex justify-between mt-3 items-center'>
+      <div className='flex flex-col lg:flex-row justify-between mt-3 items-center'>
         <div className='flex flex-col gap-2'>
           <p>
             Asignatura: {''}
@@ -25,7 +25,7 @@ function TaskC({task}:Props) {
           </p>
         </div>
 
-        <div className='flex flex-col gap-2'>
+        <div className='flex lg:flex-col gap-3 mt-4'>
           <button
             type='button'
             className='px-4 py-1.5 rounded transition-colors duration-300 hover:cursor-pointer bg-sky-600 hover:bg-sky-800 text-white font-bold'

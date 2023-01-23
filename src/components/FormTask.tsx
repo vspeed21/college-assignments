@@ -45,11 +45,11 @@ function FormTask() {
       <ShowInfoUser/>
 
       <div
-        className='bg-white p-5 md:p-10 shadow-lg rounded-md mx-5 md:mx-auto flex flex-col md:flex-row gap-7 items-center'
+        className='bg-white px-3 py-5 md:p-10 shadow-lg rounded-md mx-5 md:mx-auto flex flex-col md:flex-row gap-7 items-center md:w-[700px] lg:w-[850px]'
       >
         <form
           onSubmit={handleSubmit}
-          className='md:w-1/3'
+          className='md:w-2/5'
         >
           <div className="flex flex-col gap-3 mb-7">
             <label htmlFor="name" className='uppercase font-bold text-gray-700'>Titulo Tarea</label>
@@ -63,8 +63,8 @@ function FormTask() {
             />
           </div>
 
-          <div className='flex gap-4'>
-            <div className="flex flex-col gap-3 mb-3 w-1/2">
+          <div className=''>
+            <div className="flex flex-col gap-3 mb-3">
               <label htmlFor="date" className='uppercase font-bold text-gray-700'>Fecha de entrega</label>
               <input
                 id='date'
@@ -76,7 +76,7 @@ function FormTask() {
                 max='2024-01-23'
               />
             </div>
-            <div className="flex flex-col gap-3 mb-3 w-1/2">
+            <div className="flex flex-col gap-3 mb-3">
               <label htmlFor="subject" className='uppercase font-bold text-gray-700'>Asignatura</label>
               <select
                 id='subject'

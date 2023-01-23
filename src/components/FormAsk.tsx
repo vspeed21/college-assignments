@@ -104,7 +104,7 @@ function FormAsk() {
 
         <input
           type='submit'
-          value='agregar'
+          value='continuar'
           className='bg-sky-600 px-2 py-1 uppercase text-white rounded font-bold hover:cursor-pointer hover:bg-sky-700 transition-colors duration-300'
         />
       </form>

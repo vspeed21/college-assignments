@@ -46,10 +46,10 @@ function FormTask() {
       <form
         onSubmit={handleSubmit}
       >
-        <div className="flex flex-col gap-3 mb-3">
-          <label htmlFor="name">Nombre Tarea</label>
+        <div className="flex flex-col gap-3 mb-7">
+          <label htmlFor="name" className='uppercase font-bold text-gray-700'>Titulo Tarea</label>
           <input
-            type='tel'
+            type='text'
             className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4"
             placeholder='Ingresa el nombre de la tarea'
             value={nameTask}
@@ -59,7 +59,7 @@ function FormTask() {
 
         <div className='flex gap-4'>
           <div className="flex flex-col gap-3 mb-3 w-1/2">
-            <label htmlFor="name">Fecha de entrega</label>
+            <label htmlFor="name" className='uppercase font-bold text-gray-700'>Fecha de entrega</label>
             <input
               type='date'
               className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4"
@@ -70,7 +70,7 @@ function FormTask() {
             />
           </div>
           <div className="flex flex-col gap-3 mb-3 w-1/2">
-            <label htmlFor="name">Asignatura</label>
+            <label htmlFor="name" className='uppercase font-bold text-gray-700'>Asignatura</label>
             <select
               className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4 hover:cursor-pointer text-center"
               value={subjectTask}

@@ -58,8 +58,8 @@ function FormAsk() {
         onSubmit={handleSubmit}
         className='bg-white p-5 shadow rounded-md mx-5 w-[600px] md:mx-auto'
       >
-        <div className="flex flex-col gap-3 mb-3">
-          <label htmlFor="name">Nombre</label>
+        <div className="flex flex-col gap-3 mb-5">
+          <label htmlFor="name" className='uppercase font-bold text-gray-700'>Nombre</label>
           <input
             type='text'
             className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4"
@@ -70,8 +70,10 @@ function FormAsk() {
           />
         </div>
 
-        <div className="flex flex-col gap-3 mb-3">
-          <label htmlFor="name">Numero de materias</label>
+        <div className="flex flex-col gap-3 mb-5">
+          <label htmlFor="name" className='uppercase font-bold text-gray-700'>
+            Numero de asignaturas
+          </label>
           <input
             type='tel'
             className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4"
@@ -88,7 +90,7 @@ function FormAsk() {
 
         {inputs.map((input, i) => (
           <div className="flex flex-col gap-3 mb-3" key={i}>
-            <label htmlFor="name">{`Asignatura ${i + 1}`}</label>
+            <label htmlFor="name" className='uppercase font-bold text-gray-700'>{`Asignatura ${i + 1}`}</label>
             <input
               type='text'
               className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4"

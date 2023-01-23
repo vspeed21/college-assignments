@@ -49,9 +49,10 @@ function FormTask() {
         <div className="flex flex-col gap-3 mb-7">
           <label htmlFor="name" className='uppercase font-bold text-gray-700'>Titulo Tarea</label>
           <input
+            id='name'
             type='text'
             className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4"
-            placeholder='Ingresa el nombre de la tarea'
+            placeholder='Ingresa el titulo de la tarea'
             value={nameTask}
             onChange={e => setNameTask(e.target.value)}
           />
@@ -59,8 +60,9 @@ function FormTask() {
 
         <div className='flex gap-4'>
           <div className="flex flex-col gap-3 mb-3 w-1/2">
-            <label htmlFor="name" className='uppercase font-bold text-gray-700'>Fecha de entrega</label>
+            <label htmlFor="date" className='uppercase font-bold text-gray-700'>Fecha de entrega</label>
             <input
+              id='date'
               type='date'
               className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4"
               value={dateTask}
@@ -70,15 +72,22 @@ function FormTask() {
             />
           </div>
           <div className="flex flex-col gap-3 mb-3 w-1/2">
-            <label htmlFor="name" className='uppercase font-bold text-gray-700'>Asignatura</label>
+            <label htmlFor="subject" className='uppercase font-bold text-gray-700'>Asignatura</label>
             <select
-              className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4 hover:cursor-pointer text-center"
+              id='subject'
+              className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4 hover:cursor-pointer text-center capitalize"
               value={subjectTask}
               onChange={e => setSubjectTask(e.target.value)}
             >
-              <option value=''>{'--Seleccione--'}</option>
+              <option value=''>{'-- Seleccione --'}</option>
               {valuesInputs.map(input => (
-                <option key={input} value={input}>{input}</option>
+                <option
+                  key={input}
+                  value={input}
+                  className='capitalize'
+                >
+                  {input}
+                </option>
               ))}
             </select>
           </div>
@@ -87,7 +96,7 @@ function FormTask() {
         <input
           type='submit'
           value={task?.nameTask ? 'Guardar Cambios': 'Agregar Tarea'}
-          className='bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-white font-bold mt-3 hover:cursor-pointer w-full'
+          className='bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-white font-bold mt-3 hover:cursor-pointer w-full uppercase'
         />
       </form>
       <TaskList/>

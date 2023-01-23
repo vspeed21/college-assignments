@@ -25,9 +25,9 @@ export const TaskProvider = ({ children }:Props ) => {
   const [subjectValues, setSubjectValues] = useState<string[]>(inputs.map(() => ''));
 
   function handleSubjectValue(e: React.ChangeEvent<HTMLInputElement>, i: number) {
-    const newInputValues = {...subjectValues};
-    newInputValues[i] = e.target.value;
-    setSubjectValues(newInputValues);
+    // const newInputValues = {...subjectValues};
+    subjectValues[i] = e.target.value;
+    setSubjectValues([...subjectValues]);
   }
 
   function handleTask(task:Task) {

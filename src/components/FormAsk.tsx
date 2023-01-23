@@ -72,7 +72,7 @@ function FormAsk() {
           />
         </div>
 
-        {inputs.map((_, i) => (
+        {inputs.map((input, i) => (
           <div className="flex flex-col gap-3 mb-3" key={i}>
             <label htmlFor="name">{`Asignatura ${i + 1}`}</label>
             <input
@@ -80,7 +80,7 @@ function FormAsk() {
               className="bg-gray-100 rounded focus:outline-blue-500 focus:shadow placeholder:text-gray-800 p-2 pl-4"
               placeholder={`Ingresa el nombre de la asignatura ${i + 1}`}
               name={`subject ${i + 1}`}
-              value={subjectValues[i]}
+              value={input[i]}
               onChange={e => handleSubjectValue(e, i)}
             />
           </div>

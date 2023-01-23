@@ -68,6 +68,7 @@ export const TaskProvider = ({ children }:Props ) => {
         validQuestions,
         inputs,
         subjectValues,
+        setSubjectValues,
         handleSubjectValue,
         handleTask,
         tasks,

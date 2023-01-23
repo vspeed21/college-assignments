@@ -9,6 +9,7 @@ export type ContextTaskProps = {
   inputs: Array<[]>
   handleSubjectValue: (e: ChangeEvent<HTMLInputElement>, i: number) => void,
   subjectValues: string[],
+  setSubjectValues: (state: string[] | []) => void
   handleTask: (task: Task) => void,
   tasks: Task[]
   task: Task,

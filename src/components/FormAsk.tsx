@@ -3,7 +3,16 @@ import { toast } from 'react-toastify';
 import useTask from '../hooks/useTask';
 
 function FormAsk() {
-  const { infoUser, setInfoUser, setValidQuestions, handleSubjectValue, inputs, subjectValues } = useTask();
+
+  const {
+    infoUser,
+    setInfoUser,
+    setValidQuestions,
+    handleSubjectValue,
+    inputs,
+    subjectValues,
+    setSubjectValues
+  } = useTask();
 
   const regex = /^[+0-9]*$/;
 
@@ -34,6 +43,11 @@ function FormAsk() {
     if(e.target.name === 'subject' && !regex.test(e.target.value)) {
       e.target.value = e.target.value.slice(0, -1);
       toast.error('No ingrese letras');
+      return;
+    }
+
+    if(e.target.name === 'subject' && e.target.value.length === 0) {
+      setSubjectValues([]);
       return;
     }
   };

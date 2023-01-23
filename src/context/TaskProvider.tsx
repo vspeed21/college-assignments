@@ -31,6 +31,7 @@ export const TaskProvider = ({ children }:Props ) => {
     localStorage.getItem('subjects') ? JSON.parse(localStorage.getItem('subjects')!) : inputs.map(() => '')
   );
 
+  // Saving data on localStorage
   useEffect(() => {
     localStorage.setItem('infouser', JSON.stringify(infoUser));
   }, [infoUser]);
@@ -50,8 +51,8 @@ export const TaskProvider = ({ children }:Props ) => {
     }
   }, []);
 
+  // task & user functions
   function handleSubjectValue(e: React.ChangeEvent<HTMLInputElement>, i: number) {
-    // const newInputValues = {...subjectValues};
     subjectValues[i] = e.target.value;
     setSubjectValues([...subjectValues]);
   }
@@ -85,6 +86,30 @@ export const TaskProvider = ({ children }:Props ) => {
       });
   }
 
+  function resetApp() {
+    swal({
+      title: '¿Estas seguro?',
+      text: 'Solo reinicia los datos cuando haya acabado el semestre',
+      icon: 'warning',
+      buttons: ['CANCELAR', 'CONFIRMAR'],
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          localStorage.removeItem('infouser');
+          localStorage.removeItem('subjects');
+          localStorage.removeItem('tasks');
+          setValidQuestions(false);
+          setTasks([]);
+          setInfoUser({
+            name: '',
+            subject: '',
+          });
+          setSubjectValues([]);
+        }
+      });
+  }
+
   return (
     <TaskContext.Provider
       value={{
@@ -101,6 +126,7 @@ export const TaskProvider = ({ children }:Props ) => {
         task,
         setTask,
         deleteTask,
+        resetApp,
       }}
     >
       {children}

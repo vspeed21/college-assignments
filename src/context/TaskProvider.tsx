@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { createContext, useEffect, useState } from 'react';
 import swal from 'sweetalert';
 
 import { toast } from 'react-toastify';
@@ -11,18 +12,43 @@ interface Props {
 }
 
 export const TaskProvider = ({ children }:Props ) => {
-  const [infoUser, setInfoUser] = useState<InfoUser>({
-    name: '',
-    subject: '',
-  });
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [infoUser, setInfoUser] = useState<InfoUser>(
+    localStorage.getItem('infouser') ? JSON.parse(localStorage.getItem('infouser')!) : {
+      name: '',
+      subject: '',
+    }
+  );
+  const [tasks, setTasks] = useState<Task[]>(
+    localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')!) : []
+  );
   const [task, setTask] = useState<Partial<Task>>({});
 
   const [validQuestions, setValidQuestions] = useState(false);
 
   // Generar el estado de cada uno de las materias dinamicamente
   const inputs = Array.from({length: Number(infoUser.subject)}, (_, i) => i);
-  const [subjectValues, setSubjectValues] = useState<string[]>(inputs.map(() => ''));
+  const [subjectValues, setSubjectValues] = useState<string[]>(
+    localStorage.getItem('subjects') ? JSON.parse(localStorage.getItem('subjects')!) : inputs.map(() => '')
+  );
+
+  useEffect(() => {
+    localStorage.setItem('infouser', JSON.stringify(infoUser));
+  }, [infoUser]);
+
+  useEffect(() => {
+    localStorage.setItem('subjects', JSON.stringify(subjectValues));
+  }, [subjectValues]);
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+  useEffect(() => {
+    const infoUser = localStorage.getItem('infouser');
+    if(infoUser) {
+      setValidQuestions(true);
+    }
+  }, []);
 
   function handleSubjectValue(e: React.ChangeEvent<HTMLInputElement>, i: number) {
     // const newInputValues = {...subjectValues};
